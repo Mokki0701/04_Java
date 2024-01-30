@@ -40,7 +40,7 @@ public class VariableEx3 {
 		// 1 ~ 10 사이 난수
 		int random = (int)(Math.random() * 10 + 1);
 								 // 난수에서 발생하는 소수 부분을 강제 형변환으로 제거
-		System.out.println("random : " + random);
+		System.out.println("random : " + random); 
 		
 		
 		// 강제 형변환 확인 3
