@@ -56,14 +56,14 @@ public class AccountRun {
 		AccountPutGet cus2 = new AccountPutGet();
 		
 		
-		cus1.setName("오메가몬X");
-		cus1.setPassword("올딜리트");
+		cus1.setName("aa");
+		cus1.setPassword("bb");
 		cus1.deposit(100000);
 		
-		cus2.setName("스사노오몬");
-		cus2.setPassword("우류우참");
+		cus2.setName("cc");
+		cus2.setPassword("dd");
 		
-		cus1.putMoney("올딜리트", 5000, cus2);
+		cus1.putMoney("bb", 5000, cus2);
 		
 	}
 	
