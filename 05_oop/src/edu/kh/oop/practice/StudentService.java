@@ -10,9 +10,7 @@ public class StudentService {
 		
 		int input = 0;
 		
-		Student std1 = null;
-		Student std2 = null;
-		Student std3 = null;
+		Student[] students = null;
 		
 		do {
 			
@@ -31,7 +29,10 @@ public class StudentService {
 			
 			switch(input) {
 			case 1 :
-				if(sc.nextInt() == 1) setStudent(std1);
+				int num = sc.nextInt();
+				for(int i = 0; i < num; i++) {
+					students[i] = createStudent();
+				}
 				break;
 			case 2 : break;
 			case 3 : break;
@@ -51,8 +52,10 @@ public class StudentService {
 	
 	
 	
-	private void setStudent(Student s) {
+	private Student createStudent() {
+		String str = sc.nextLine();
 		
+		return null;
 	}
 }
 

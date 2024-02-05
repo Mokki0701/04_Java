@@ -16,7 +16,7 @@ public class StudentService {
 		
 		// 학생 객체를 참조할 참조형 변수 2개 선언;
 		// (null : 참조하는 객체가 없음)
-		Student std1 = null;
+		Student std1 = new Student("홍길동", "112233", '남'); // 테스트용 객체 생성
 		Student std2 = null;
 		
 		// do ~ while : 최소 1회 이상 반복
@@ -67,8 +67,7 @@ public class StudentService {
 				else htmlGame(std2);
 				break;
 			case 6:
-				String str = "";
-				str = javaBattle(std1,std2);
+				String str = javaBattle(std1,std2);
 				System.out.println(str);
 				break;
 			case 7:
@@ -141,12 +140,13 @@ public class StudentService {
 	 */
 	
 	private void javaGame(Student s) {
-		System.out.print("공부량을 설정해주세요");
+		System.out.print("증가 또는 감소한 Java 역량 입력(정수) : ");
 		int num = sc.nextInt();
 		int num2 = s.getJava();
 		s.setJava(num2+num);
-		if(s.getJava() >= Student.MAX_VALUE) s.setJava(Student.MAX_VALUE);
-		else if(s.getJava() <=Student.MIN_VALUE) s.setJava(Student.MIN_VALUE);
+		
+		if(s.getJava() > Student.MAX_VALUE) s.setJava(Student.MAX_VALUE);
+		else if(s.getJava() <Student.MIN_VALUE) s.setJava(Student.MIN_VALUE);
 		
 		System.out.println("Java 역량 수정 완료");
 		
@@ -173,7 +173,7 @@ public class StudentService {
 	// 50 -> 0  (-100)         // 최소 값 범위 초과 X
 	
 	private void htmlGame(Student s) {
-		System.out.print("공부량을 설정해주세요");
+		System.out.print("증가 또는 감소한 HTML 역량 입력(정수) : ");
 		int num = sc.nextInt();
 		int num2 = s.getHtml();
 		s.setHtml(num2+num);
@@ -185,14 +185,61 @@ public class StudentService {
 		System.out.printf("%d -> %d  (%d)",num2, s.getHtml(), num );
 	}
 	
-	private String javaBattle(Student s, Student s2) {
+	/** 매개 변수로 전달 받은 두 Student의 Java 점수 비교
+	 * @param s1
+	 * @param s2
+	 * @return 결과 문자열
+	 */
+	private String javaBattle(Student s1, Student s2) {
 		
-		return String.format("%d(std1) : %d(std2)", s.getJava(), s2.getJava());
+		if(s1 == null) {
+			return "첫 번째 학생이 등록되지 않았습니다.";
+		}
+		if(s2 == null) {
+			return "두 번째 학생이 등록되지 않았습니다.";
+		}
+		
+		String result = String.format("%s : %d / %s : %d \n", 
+				s1.getName(), s1.getJava(), 
+				s2.getName(), s2.getJava());
+		
+		// 두 학생의 점수 비교
+		if(s1.getJava() > s2.getJava()) {
+			int a = s1.getJava() - s2.getJava();
+			return result + s1.getName() + "의 점수가" + a + "점 더 높습니다.";
+		}
+		if(s2.getJava() > s1.getJava()) {
+			int a = s2.getJava() - s1.getJava();
+			return result + s2.getName() + "의 점수가 " + a + "점 더 높습니다";
+		}
+		
+		return result + "점수가 같습니다";
 	}
 	
-	private String htmlBattle(Student s, Student s2) {
+	private String htmlBattle(Student s1, Student s2) {
 		
-		return String.format("%d(std1) : %d(std2)", s.getJava(), s2.getJava());
+		if(s1 == null) {
+			return "첫 번째 학생이 등록되지 않았습니다.";
+		}
+		if(s2 == null) {
+			return "두 번째 학생이 등록되지 않았습니다.";
+		}
+		
+		String result = String.format("%s : %d / %s : %d \n", 
+				s1.getName(), s1.getHtml(), 
+				s2.getName(), s2.getHtml());
+		
+		// 두 학생의 점수 비교
+		if(s1.getHtml() > s2.getHtml()) {
+			int a = s1.getHtml() - s2.getHtml();
+			return result + s1.getName() + "의 점수가" + a + "점 더 높습니다.";
+		}
+		if(s2.getHtml() > s1.getHtml()) {
+			int a = s2.getHtml() - s1.getHtml();
+			return result + s2.getName() + "의 점수가 " + a + "점 더 높습니다";
+		}
+		
+		return result + "점수가 같습니다";
 	}
 	
 	
