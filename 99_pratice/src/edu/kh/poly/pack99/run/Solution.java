@@ -13,10 +13,14 @@ class Solution {
     
     for(int i = 0, num = callings.length; i < num; i++ ){
         int num2 = map.get(callings[i]);
+        
+        String str = players[num2-1];
+        
+        map.put(str, num2);
+        map.put(callings[i], num2-1);
     }
     
 
-    
     
     
     return players;
