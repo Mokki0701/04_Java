@@ -134,7 +134,7 @@ public class TodoListServiceImpl implements TodoListService {
 		
 		if(todo == null) return null;
 		
-		return todo.getTitle(); // 제목 반환
+		return todo.getTitle(); // 제목 반환 
 	}
 
 	
