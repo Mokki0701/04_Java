@@ -36,6 +36,7 @@ public class TodoListDAOImpl implements TodoListDAO{
 		if(file.exists()) { // 파일이 존재하면
 				
 			try{
+				
 				// 객체 입력 스트림을 이용해서 입력 받기
 				ois = new ObjectInputStream(new FileInputStream(FILE_PATH));
 			
